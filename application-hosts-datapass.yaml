@@ -1,0 +1,333 @@
+eos-datapass:
+  target:
+    scheme: https
+    host: 'eos-corporate.int.tmocce.com'
+    port: 443
+    uri: '/v1/cpslookup/ondevicefulfillment'
+    target-system-name: eos-datapass-get
+  integration:
+    timeout: 5000
+    channelId: 'TMO-APP'
+
+eos-datapass-submit:
+  target:
+    scheme: https
+    host: 'eos-corporate.int.tmocce.com'
+    port: 443
+    uri: '/v1/cps/submit'
+    target-system-name: eos-datapass-submit
+  integration:
+    timeout: 5000
+    channelId: 'TMO-APP'
+
+datapass-es:
+  target:
+    host: 'spanish-api-reader.tst-int.dabnpe.t-mobile.com'
+    uri: '/tst-dab-spanish-facts-reader'
+    scheme: https
+    port: 443
+    target-system-name: datapass-es
+
+facts-controller:
+  target:
+    scheme: https
+    host: 'facts-controller'
+    port: 9000
+    uri: '/2.0/facts/controller/gather'
+    target-system-name: facts-controller
+
+--- ### LOCAL ###
+
+spring.profiles: local
+
+eos-datapass:
+  target:
+    scheme: http
+    host: 'localhost'
+    port: 8088
+    uri: '/v1/cpslookup/ondevicefulfillment'
+
+eos-datapass-submit:
+  target:
+    scheme: http
+    host: 'localhost'
+    port: 8088
+    uri: '/v1/cps/submit'
+
+datapass-es:
+  target:
+    scheme: http
+    host: 'localhost'
+    port: 8088
+
+facts-controller:
+  target:
+    scheme: http
+    host: 'localhost'
+    port: 8089
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### DAB-TST ###
+
+spring.profiles: dab-tst
+
+eos-datapass:
+  target:
+    host: 'qlab02.eos.corporate.t-mobile.com'
+
+eos-datapass-submit:
+  target:
+    host: 'qlab02.eos.corporate.t-mobile.com'
+
+datapass-es:
+  target:
+    host: 'spanish-api-reader.tst-int.dabnpe.t-mobile.com'
+    uri: '/tst-dab-spanish-facts-reader'
+    scheme: https
+
+facts-controller:
+  target:
+    scheme: https
+    host: 'facts-controller'
+    port: 9000
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+
+--- ### DAB-STG ###
+
+spring.profiles: dab-stg
+
+eos-datapass:
+  target:
+    host: 'qlab02.eos.corporate.t-mobile.com'
+
+eos-datapass-submit:
+  target:
+    host: 'qlab02.eos.corporate.t-mobile.com'
+
+datapass-es:
+  target:
+    host: 'spanish-api-reader.stg-int.dabnpe.t-mobile.com'
+    uri: '/stg-dab-spanish-facts-reader'
+    scheme: https
+
+facts-controller:
+  target:
+    scheme: https
+    host: 'facts-controller'
+    port: 9000
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### DAB-REG ###
+
+spring.profiles: dab-reg
+
+eos-datapass:
+  target:
+    host: 'qlab01.eos.corporate.t-mobile.com'
+
+eos-datapass-submit:
+  target:
+    host: 'qlab01.eos.corporate.t-mobile.com'
+
+datapass-es:
+  target:
+    host: 'spanish-api-reader.reg-int.dabnpe.t-mobile.com'
+    uri: '/reg-dab-spanish-facts-reader'
+    scheme: https
+
+facts-controller:
+  target:
+    scheme: https
+    host: 'facts-controller'
+    port: 9000
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### DAB-PRF ###
+
+spring.profiles: dab-prf
+
+eos-datapass:
+  target:
+    host: 'plab01.eos.corporate.t-mobile.com'
+
+eos-datapass-submit:
+  target:
+    host: 'plab01.eos.corporate.t-mobile.com'
+
+datapass-es:
+  target:
+    host: 'spanish-api-reader.prf-int.dabnpe.t-mobile.com'
+    uri: '/prf-dab-spanish-facts-reader'
+    scheme: https
+
+facts-controller:
+  target:
+    scheme: https
+    host: 'facts-controller'
+    port: 9000
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### DAB-PQA ###
+
+spring.profiles: dab-pqa
+
+eos-datapass:
+  target:
+    host: 'stage.eos.corporate.t-mobile.com'
+
+eos-datapass-submit:
+  target:
+    host: 'stage.eos.corporate.t-mobile.com'
+
+datapass-es:
+  target:
+    host: 'spanish-api-reader.pqa-int.dab.t-mobile.com'
+    uri: '/pqa-dab-spanish-facts-reader'
+    scheme: https
+
+facts-controller:
+  target:
+    scheme: https
+    host: 'facts-controller'
+    port: 9000
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### DAB-PRD ###
+
+spring.profiles: dab-prd
+
+eos-datapass:
+  target:
+    host: 'eos.corporate.t-mobile.com'
+
+eos-datapass-submit:
+  target:
+    host: 'eos.corporate.t-mobile.com'
+
+datapass-es:
+  target:
+    host: 'spanish-api-reader.prd-int.dab.t-mobile.com'
+    uri: '/prd-dab-spanish-facts-reader'
+    scheme: https
+
+facts-controller:
+  target:
+    scheme: https
+    host: 'facts-controller'
+    port: 9000
+
+--- ### STAGE ###
+
+spring.profiles: stage
+
+eos-datapass:
+  target:
+    host: 'mock--various-fact-sources.int.stage.tmocce.com'
+
+eos-datapass-submit:
+  target:
+    host: 'mock--various-fact-sources.int.stage.tmocce.com'
+
+datapass-es:
+  target:
+    scheme: https
+    host: 'mock--various-fact-sources.int.stage.tmocce.com'
+    port: 443
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+
+--- ### PREPROD ###
+
+spring.profiles: preprod
+
+eos-datapass:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: stage.eos.corporate.t-mobile.com
+
+eos-datapass-submit:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: stage.eos.corporate.t-mobile.com
+
+datapass-es:
+  target:
+    scheme: http
+    host: 'facts-lang.int.preprod.tmocce.com'
+    port: 3000
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### PREVIEW ###
+
+spring.profiles: prod-preview
+
+eos-datapass:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com
+
+eos-datapass-submit:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: stage.eos.corporate.t-mobile.com
+
+datapass-es:
+  target:
+    scheme: http
+    host: 'preview--facts-lang.int.tmocce.com'
+    port: 3000
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### PROD ###
+
+spring.profiles: prod
+
+eos-datapass:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com
+
+eos-datapass-submit:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com
+
+datapass-es:
+  target:
+    scheme: http
+    host: 'facts-lang.int.tmocce.com'
+    port: 3000

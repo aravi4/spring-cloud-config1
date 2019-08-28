@@ -1,0 +1,81 @@
+server:
+  port: 9000
+  ssl:
+    enabled: false
+management:
+  server:
+    port: 19000
+    ssl:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - prometheus
+          - info
+      path-mapping:
+        prometheus: metrics
+      base-path: ''
+
+--- ### TEST ###
+spring.profiles: dab-tst
+spring:
+  profiles:
+    include: >
+      server-secure
+
+--- ### STAGE ###
+spring.profiles: dab-stg
+spring:
+  profiles:
+    include: >
+      server-secure
+
+--- ### REG ###
+spring.profiles: dab-reg
+spring:
+  profiles:
+    include: >
+      server-secure
+
+--- ### PRF ###
+spring.profiles: dab-prf
+spring:
+  profiles:
+    include: >
+      server-secure
+
+--- ### PROD-PREVIEW ###
+spring.profiles: dab-pqa
+spring:
+  profiles:
+    include: >
+      server-secure
+
+--- ### PROD ###
+spring.profiles: dab-prd
+spring:
+  profiles:
+    include: >
+      server-secure
+
+--- ### SECURE ###
+spring.profiles: server-secure
+server:
+  ssl:
+    enabled: true
+    key-store: ./keys/default/keystore.jks
+    key-store-type: JKS
+    key-store-password: awesome
+    key-alias: key
+    key-password: awesome
+management:
+  server:
+    ssl:
+      enabled: true
+      key-store: ./keys/default/keystore.jks
+      key-store-type: JKS
+      key-store-password: awesome
+      key-alias: key
+      key-password: awesome
