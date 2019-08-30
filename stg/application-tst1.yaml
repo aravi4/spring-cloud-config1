@@ -1,0 +1,6 @@
+
+appdebug:
+  status: false
+  percentage: 8000
+  msisdns:
+    - 12345678
