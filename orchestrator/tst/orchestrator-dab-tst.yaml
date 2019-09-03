@@ -1,6 +1,10 @@
-
-appdebug:
-  status: true
-  percentage: 0.05
-  msisdns:
-    - 12345678
+spring:
+  profiles:
+    include: >
+      server-props,
+      hosts,
+      hosts-datapass,
+      httpclient,
+      metrics-props,
+      appdebug
+    active:
