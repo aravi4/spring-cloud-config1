@@ -1,8 +1,8 @@
 card-engine:
   target:
     scheme: https
-    host: 'preview--card-engine.int.tmocce.com'
-    port: 443
+    host: 'card-engine'
+    port: 9000
     uri: '/1.0/evaluate/card/group/NativeBillAPI'
     target-system-name: card-engine
   integration:
@@ -11,7 +11,7 @@ card-engine:
 eos:
   target:
     scheme: https
-    host: 'eos-corporate.int.tmocce.com'
+    host: 'qlab01.eos.corporate.t-mobile.com'
     port: 443
     uri: '/accounts/v3/'
     target-system-name: eos
@@ -25,17 +25,18 @@ eos:
 eos-auth:
   target:
     scheme: https
-    host: 'eos-corporate.int.tmocce.com'
+    host: 'qlab01.eos.corporate.t-mobile.com'
     port: 443
     uri: '/v1/eosoauthmanager/usertoken'
     target-system-name: eos-auth
   integration:
+    hostHeader: qlab01.eos.corporate.t-mobile.com
     timeout: 5000
 
 eos-payment:
   target:
     scheme: https
-    host: 'eos-corporate.int.tmocce.com'
+    host: 'qlab01.eos.corporate.t-mobile.com'
     port: 443
     uri: '/payments/v3/process'
     target-system-name: eos-payment
@@ -44,6 +45,7 @@ eos-payment:
     activityId: '123456'
     applicationId: 'TMOApp'
     channelId: 'TMOApp'
+
 
 --- ### LOCAL ###
 
@@ -110,30 +112,60 @@ logging:
 
 --- ### DAB-STG ###
 
-spring.profiles: dab-stg
+#spring.profiles: dab-stg
 
 card-engine:
   target:
+    scheme: https
     host: 'card-engine'
     port: 9000
+    uri: '/1.0/evaluate/card/group/NativeBillAPI'
+    target-system-name: card-engine
+  integration:
+    timeout: 5000
 
 eos:
   target:
+    scheme: https
     host: 'qlab03.eos.corporate.t-mobile.com'
+    port: 443
+    uri: '/accounts/v3/'
+    target-system-name: eos
+  integration:
+    timeout: 5000
+    channelId: 'TMOApp'
+    isLimitedWalletCapacity: 'true'
+    eosWalletCapacity: '10'
+    applicationId: 'TMOApp'
 
 eos-auth:
   target:
+    scheme: https
     host: 'qlab03.eos.corporate.t-mobile.com'
+    port: 443
+    uri: '/v1/eosoauthmanager/usertoken'
+    target-system-name: eos-auth
   integration:
+    timeout: 5000
     hostHeader: qlab02.eos.corporate.t-mobile.com
 
 eos-payment:
   target:
+    scheme: https
     host: 'qlab03.eos.corporate.t-mobile.com'
+    port: 443
+    uri: '/payments/v3/process'
+    target-system-name: eos-payment
+  integration:
+    timeout: 5000
+    activityId: '123456'
+    applicationId: 'TMOApp'
+    channelId: 'TMOApp'
 
 logging:
   level:
     'com.tmobile.dab.*': DEBUG
+
 
 --- ### DAB-REG ###
 

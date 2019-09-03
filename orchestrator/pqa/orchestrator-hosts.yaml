@@ -1,49 +1,4 @@
-card-engine:
-  target:
-    scheme: https
-    host: 'preview--card-engine.int.tmocce.com'
-    port: 443
-    uri: '/1.0/evaluate/card/group/NativeBillAPI'
-    target-system-name: card-engine
-  integration:
-    timeout: 5000
 
-eos:
-  target:
-    scheme: https
-    host: 'eos-corporate.int.tmocce.com'
-    port: 443
-    uri: '/accounts/v3/'
-    target-system-name: eos
-  integration:
-    timeout: 5000
-    channelId: 'TMOApp'
-    isLimitedWalletCapacity: 'true'
-    eosWalletCapacity: '10'
-    applicationId: 'TMOApp'
-
-eos-auth:
-  target:
-    scheme: https
-    host: 'eos-corporate.int.tmocce.com'
-    port: 443
-    uri: '/v1/eosoauthmanager/usertoken'
-    target-system-name: eos-auth
-  integration:
-    timeout: 5000
-
-eos-payment:
-  target:
-    scheme: https
-    host: 'eos-corporate.int.tmocce.com'
-    port: 443
-    uri: '/payments/v3/process'
-    target-system-name: eos-payment
-  integration:
-    timeout: 5000
-    activityId: '123456'
-    applicationId: 'TMOApp'
-    channelId: 'TMOApp'
 
 --- ### LOCAL ###
 
@@ -83,54 +38,26 @@ logging:
 
 --- ### DAB-TST ###
 
-#spring.profiles: dab-tst
+spring.profiles: dab-tst
+
 card-engine:
   target:
-    scheme: https
     host: 'card-engine'
     port: 9000
-    uri: '/1.0/evaluate/card/group/NativeBillAPI'
-    target-system-name: card-engine
-  integration:
-    timeout: 5000
 
 eos:
   target:
-    scheme: https
     host: 'qlab02.eos.corporate.t-mobile.com'
-    port: 443
-    uri: '/accounts/v3/'
-    target-system-name: eos
-  integration:
-    timeout: 5000
-    channelId: 'TMOApp'
-    isLimitedWalletCapacity: 'true'
-    eosWalletCapacity: '10'
-    applicationId: 'TMOApp'
 
 eos-auth:
   target:
-    scheme: https
     host: 'qlab02.eos.corporate.t-mobile.com'
-    port: 443
-    uri: '/v1/eosoauthmanager/usertoken'
-    target-system-name: eos-auth
   integration:
-    timeout: 5000
     hostHeader: qlab02.eos.corporate.t-mobile.com
 
 eos-payment:
   target:
-    scheme: https
     host: 'qlab02.eos.corporate.t-mobile.com'
-    port: 443
-    uri: '/payments/v3/process'
-    target-system-name: eos-payment
-  integration:
-    timeout: 5000
-    activityId: '123456'
-    applicationId: 'TMOApp'
-    channelId: 'TMOApp'
 
 logging:
   level:
@@ -219,27 +146,57 @@ spring.profiles: dab-pqa
 
 card-engine:
   target:
+    scheme: https
     host: 'card-engine'
     port: 9000
+    uri: '/1.0/evaluate/card/group/NativeBillAPI'
+    target-system-name: card-engine
+  integration:
+    timeout: 5000
 
 eos:
   target:
+    scheme: https
     host: 'stage.eos.corporate.t-mobile.com'
+    port: 443
+    uri: '/accounts/v3/'
+    target-system-name: eos
+  integration:
+    timeout: 5000
+    channelId: 'TMOApp'
+    isLimitedWalletCapacity: 'true'
+    eosWalletCapacity: '10'
+    applicationId: 'TMOApp'
 
 eos-auth:
   target:
+    scheme: https
     host: 'stage.eos.corporate.t-mobile.com'
+    port: 443
+    uri: '/v1/eosoauthmanager/usertoken'
+    target-system-name: eos-auth
   integration:
+    timeout: 5000
     hostHeader: eos.corporate.t-mobile.com
 
 eos-payment:
   target:
+    scheme: https
     host: 'stage.eos.corporate.t-mobile.com'
+    port: 443
+    uri: '/payments/v3/process'
+    target-system-name: eos-payment
+  integration:
+    timeout: 5000
+    activityId: '123456'
+    applicationId: 'TMOApp'
+    channelId: 'TMOApp'
 
 logging:
   level:
     'com.tmobile.dab.*': DEBUG
     'org.apache.http': DEBUG
+
 
 --- ### DAB-PRD ###
 
@@ -264,3 +221,110 @@ eos-payment:
   target:
     host: 'eos.corporate.t-mobile.com'
 
+
+--- ### STAGE ###
+
+spring.profiles: stage
+
+card-engine:
+  target:
+    host: 'mock--various-fact-sources.int.stage.tmocce.com'
+
+eos:
+  target:
+    host: 'mock--various-fact-sources.int.stage.tmocce.com'
+
+eos-auth:
+  target:
+    host: 'mock--various-fact-sources.int.stage.tmocce.com'
+
+eos-payment:
+  target:
+    host: 'mock--various-fact-sources.int.stage.tmocce.com'
+
+
+--- ### PREPROD ###
+
+spring.profiles: preprod
+
+card-engine:
+  target:
+    host: 'card-engine.int.preprod.tmocce.com'
+
+eos:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: stage.eos.corporate.t-mobile.com
+
+eos-auth:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: stage.eos.corporate.t-mobile.com
+
+eos-payment:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: stage.eos.corporate.t-mobile.com
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### PREVIEW ###
+
+spring.profiles: prod-preview
+
+card-engine:
+  target:
+    host: 'preview--card-engine.int.tmocce.com'
+
+eos:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com
+
+eos-auth:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com
+
+eos-payment:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG
+
+--- ### PROD ###
+
+spring.profiles: prod
+
+card-engine:
+  target:
+    host: 'card-engine.int.tmocce.com'
+
+eos:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com
+
+eos-auth:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com
+
+eos-payment:
+  target:
+    host: 'eos-corporate.int.tmocce.com'
+  integration:
+    hostHeader: eos.corporate.t-mobile.com

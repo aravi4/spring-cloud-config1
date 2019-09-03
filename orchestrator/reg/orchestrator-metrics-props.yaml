@@ -1,0 +1,34 @@
+management:
+  metrics:
+    web:
+      server:
+        # auto-registers metrics for all endpoints
+        auto-time-requests: false
+        # default is http.server.requests
+        requests-metric-name: http-server-requests
+      client:
+        # default is http.client.requests
+        requests-metric-name: http-client-requests
+    export:
+      graphite:
+        # true by default
+        enabled: false
+        step: PT30S
+        rate-units: seconds
+        duration-units: milliseconds
+        host: localhost
+        port: 2003
+        protocol: Plaintext
+      prometheus:
+        enabled: true
+        step: PT30S
+    common-tags:
+      prefix: sc
+      environment: chef-environment
+      app-name: orchestrator
+      agent: mesos-agent
+    common-tag-ordering:
+      - prefix
+      - environment
+      - app-name
+      - agent

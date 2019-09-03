@@ -1,0 +1,29 @@
+server:
+  port: 9000
+  ssl:
+    enabled: true
+    key-store: ./keys/default/keystore.jks
+    key-store-type: JKS
+    key-store-password: awesome
+    key-alias: key
+    key-password: awesome
+management:
+  server:
+    port: 19000
+    ssl:
+      enabled: true
+      key-store: ./keys/default/keystore.jks
+      key-store-type: JKS
+      key-store-password: awesome
+      key-alias: key
+      key-password: awesome
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - prometheus
+          - info
+      path-mapping:
+        prometheus: metrics
+      base-path: ''
