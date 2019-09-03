@@ -1,0 +1,41 @@
+eos-datapass:
+  target:
+    scheme: https
+    host: 'qlab02.eos.corporate.t-mobile.com'
+    port: 443
+    uri: '/v1/cpslookup/ondevicefulfillment'
+    target-system-name: eos-datapass-get
+  integration:
+    timeout: 5000
+    channelId: 'TMO-APP'
+
+eos-datapass-submit:
+  target:
+    scheme: https
+    host: 'qlab02.eos.corporate.t-mobile.com'
+    port: 443
+    uri: '/v1/cps/submit'
+    target-system-name: eos-datapass-submit
+  integration:
+    timeout: 5000
+    channelId: 'TMO-APP'
+
+datapass-es:
+  target:
+    host: 'spanish-api-reader.tst-int.dabnpe.t-mobile.com'
+    uri: '/tst-dab-spanish-facts-reader'
+    scheme: https
+    port: 443
+    target-system-name: datapass-es
+
+facts-controller:
+  target:
+    scheme: https
+    host: 'facts-controller'
+    port: 9000
+    uri: '/2.0/facts/controller/gather'
+    target-system-name: facts-controller
+
+logging:
+  level:
+    'com.tmobile.dab.*': DEBUG

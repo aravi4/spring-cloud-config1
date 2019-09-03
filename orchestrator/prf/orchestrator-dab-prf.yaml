@@ -1,10 +1,10 @@
 spring:
   profiles:
     include: >
-      server-props,
-      hosts,
-      hosts-datapass,
-      httpclient,
-      metrics-props,
-      appdebug
+      server-props-prf,
+      hosts-prf,
+      hosts-datapass-prf,
+      httpclient-prf,
+      metrics-props-prf,
+      appdebug-prf
     active:
