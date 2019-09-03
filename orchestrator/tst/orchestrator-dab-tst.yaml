@@ -6,5 +6,6 @@ spring:
       hosts-datapass,
       httpclient,
       metrics-props,
-      appdebug
+      appdebug,
+      server-secure
     active:
