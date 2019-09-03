@@ -5,6 +5,6 @@ spring:
       hosts-prd,
       hosts-datapass-prd,
       httpclient-prd,
-      metrics-props-prd-prd,
+      metrics-props-prd,
       appdebug-prd
     active:
