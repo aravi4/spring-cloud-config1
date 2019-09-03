@@ -72,7 +72,7 @@ logging:
 
 --- ### DAB-TST ###
 
-#spring.profiles: dab-tst
+spring.profiles: dab-tst
 
 eos-datapass:
   target:
