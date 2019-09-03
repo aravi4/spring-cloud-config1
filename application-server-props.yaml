@@ -61,7 +61,7 @@ spring:
       server-secure
 
 --- ### SECURE ###
-spring.profiles: server-secure
+#spring.profiles: server-secure
 server:
   ssl:
     enabled: true
