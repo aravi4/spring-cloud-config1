@@ -8,4 +8,3 @@ spring:
       metrics-props-tst,
       appdebug-tst
     active:
-
